@@ -2,8 +2,34 @@
 
 __author__ = "730529974"
 
-WORD: str = input("Enter a 5-character word: ")
+word: str = input("Enter a 5-character word: ")
+if len(word) != 5:
+    print("Error: Word must contain 5 characters" )
+    exit()
 character: str = input("Enter a single character: ")
+if len(character) != 1:
+    print("Error: Character must be a single character. ")
+    quit()
+count: int = (0)
 
-print("Searching for " + str(character) + " in " + str(WORD))
-print(str(character) + " found at index " + WORD[0])
+print("Searching for " + character + " in " + word)
+
+if character == word[0]:
+    print(character + " found at index 0 " )
+    count = count + 1
+if character == word[1]:
+    print(character + " found at index 1 " )
+    count = count + 1
+if character == word[2]:
+    print(character + " found at index 2 " )
+    count = count + 1
+if character == word[3]:
+    print(character + " found at index 3 ")
+    count = count + 1
+if character == word[4]:
+    print(character + " found at index 4 ")
+    count = count + 1
+if count > 0:
+    print(str(count) + " instance of " + character + " found in " + word)
+else:
+    print("No instances of " + character + " found in " + word )
