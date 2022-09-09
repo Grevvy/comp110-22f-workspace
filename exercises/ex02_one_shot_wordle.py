@@ -20,14 +20,14 @@ while i < 6:
     if guess[i] == secret[i]:
         a += GREEN_BOX
     else:
-        while exist != True and b < len(secret):
+        while exist is not True and b < len(secret):
             if secret[b] == guess[i]:
                 exist = True
             else:
                 b += 1
-        if exist == True:
+        if exist is True:
             a += YELLOW_BOX
-        if exist == False:
+        if exist is False:
             a += WHITE_BOX
     i += 1
     b = 0
@@ -35,16 +35,7 @@ while i < 6:
 
 print(a)
 
-
-
-
 if guess != (secret):
-    print("Not quite. Play again soon!")
+    print("Not quite. Play again soon! ")
 if guess == secret:
-    print("Woo! You got it!")
-
-
-
-
-    
-        
+    print("Woo! You got it! ")        
