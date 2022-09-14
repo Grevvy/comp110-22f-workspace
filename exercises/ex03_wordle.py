@@ -1,10 +1,10 @@
-"""A wordle-like game. """
+"""A wordle-like game."""
 
-___author___ = "730529974"
+__author__ = "730529974"
 
 
-def contains_char(search_word: str, search_character:str) -> bool:
-    """Searches if a word contains a character. """
+def contains_char(search_word: str, search_character: str) -> bool:
+    """Searches if a word contains a character."""
     assert len(search_character) == 1
     b: int = 0
     exist: bool = False
@@ -20,7 +20,7 @@ def contains_char(search_word: str, search_character:str) -> bool:
 
 
 def emojified(guess: str, secret: str) -> str:
-    """Prints a Yellow white or green box for a guessed character. """
+    """Prints a Yellow white or green box for a guessed character."""
     assert len(guess) == len(secret)
     i: int = 0
     boxes: str = ""
@@ -39,7 +39,7 @@ def emojified(guess: str, secret: str) -> str:
 
 
 def input_guess(input_length: int) -> str:
-    """Verifies the input word is the correct length. """
+    """Verifies the input word is the correct length."""
     input_word: str = input(f"Enter a {input_length} character word: ")
     while len(input_word) != input_length:
         input_word = input(f"That wasn't {input_length} chars! Try again: ")
@@ -47,7 +47,7 @@ def input_guess(input_length: int) -> str:
 
 
 def main() -> None:
-    """The entrypoint of the program and main game loop. """
+    """The entrypoint of the program and main game loop."""
     correct_word: str = "codes"
     turn_count: int = 1
     input_word: str = ""
@@ -63,7 +63,7 @@ def main() -> None:
             print(emojified(input_word, correct_word))
         turn_count += 1
     if turn_count == 7:
-        print(f"x/6 - Sorry, try again tomorrow! ")         
+        print("x/6 - Sorry, try again tomorrow! ")         
 
 
 if __name__ == "__main__":
