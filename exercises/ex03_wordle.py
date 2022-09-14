@@ -2,9 +2,6 @@
 
 ___author___ = "730529974"
 
-from pyexpat.errors import codes
-from exercises.ex02_one_shot_wordle import GREEN_BOX, WHITE_BOX, YELLOW_BOX
-
 
 def contains_char(search_word: str, search_character:str) -> bool:
     """Searches if the word contains a character. """
@@ -51,18 +48,23 @@ def input_guess(input_length: int) -> str:
 
 def main() -> None:
     """The entrypoint of the program and main game loop. """
-    correct_word: str = codes
+    correct_word: str = "codes"
     turn_count: int = 1
     input_word: str = ""
-    while turn_count >= 6:
+    while turn_count <= 6:
         print(f"=== Turn {turn_count}/6 ===")
         input_word = input_guess(len(correct_word))
         if input_word == correct_word:
             print(emojified(input_word, correct_word))
             print(f"You won in {turn_count}/6 turns! ")
+            turn_count = 9
+
         else:
             print(emojified(input_word, correct_word))
         turn_count += 1
     if turn_count == 7:
         print(f"x/6 - Sorry, try again tomorrow! ")         
 
+
+if __name__ == "__main__":
+    main()
