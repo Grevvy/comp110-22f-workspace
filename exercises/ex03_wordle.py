@@ -1,10 +1,10 @@
-"""A wordle like game. """
+"""A wordle-like game. """
 
 ___author___ = "730529974"
 
 
 def contains_char(search_word: str, search_character:str) -> bool:
-    """Searches if the word contains a character. """
+    """Searches if a word contains a character. """
     assert len(search_character) == 1
     b: int = 0
     exist: bool = False
@@ -20,7 +20,7 @@ def contains_char(search_word: str, search_character:str) -> bool:
 
 
 def emojified(guess: str, secret: str) -> str:
-    """Prints a Yellow or White box for a guessed character. """
+    """Prints a Yellow white or green box for a guessed character. """
     assert len(guess) == len(secret)
     i: int = 0
     boxes: str = ""
@@ -51,14 +51,14 @@ def main() -> None:
     correct_word: str = "codes"
     turn_count: int = 1
     input_word: str = ""
-    while turn_count <= 6:
+    game_end: bool = False
+    while turn_count <= 6 and game_end is False:
         print(f"=== Turn {turn_count}/6 ===")
         input_word = input_guess(len(correct_word))
         if input_word == correct_word:
             print(emojified(input_word, correct_word))
             print(f"You won in {turn_count}/6 turns! ")
-            turn_count = 9
-
+            game_end = True
         else:
             print(emojified(input_word, correct_word))
         turn_count += 1
