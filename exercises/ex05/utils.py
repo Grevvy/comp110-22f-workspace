@@ -12,7 +12,7 @@ def only_evens(xs: list[int]) -> list[int]:
     return a         
 
 
-def concat(xs: list[int], xa:list[int]) -> list[int]:
+def concat(xs: list[int], xa: list[int]) -> list[int]:
     """Adds items from a second list to the first."""
     a: list[int] = []
     for x in xs:
@@ -24,7 +24,7 @@ def concat(xs: list[int], xa:list[int]) -> list[int]:
 
 def sub(xs: list[int], a: int, b: int) -> list[int]:
     """Given a set limit in an index. returns the values in the list between the two parameters."""
-    c: list[int]= []
+    c: list[int] = []
     if len(xs) < 1:
         return c
     if a >= len(xs):
