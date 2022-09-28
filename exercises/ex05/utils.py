@@ -27,7 +27,7 @@ def sub(xs: list[int], a: int, b: int) -> list[int]:
     c: list[int]= []
     if len(xs) < 1:
         return c
-    if a > len(xs):
+    if a >= len(xs):
         return c
     while a < b:
         if a < 0:

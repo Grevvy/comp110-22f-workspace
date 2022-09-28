@@ -1,9 +1,9 @@
 """Testing for list utility functions."""
 
 
-from ex05.utils import only_evens
-from ex05.utils import concat
-from ex05.utils import sub
+from exercises.ex05.utils import only_evens
+from exercises.ex05.utils import concat
+from exercises.ex05.utils import sub
 
 def test_only_evens() -> None:
     xs: list[int] = []
