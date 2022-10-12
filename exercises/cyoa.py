@@ -15,6 +15,7 @@ CAT_SLY: str = "\U0001F63C"
 
 
 def main() -> None:
+    """The main game loop."""
     global points
     greet()    
     while points < 3:
@@ -26,8 +27,9 @@ def main() -> None:
 
 
 def greet() -> None:
+    """A function that greets the player."""
     global player
-    print("Welcome to 'Cat Path' ")
+    print("Welcome to 'Cat Path ' ")
     print("You will play as a cat choosing paths. ")
     print("If you choose the right path, you will receive a cat treat" )
     print("If you choose the wrong path nine times, you will be out of lives. ")
@@ -35,6 +37,7 @@ def greet() -> None:
 
 
 def eat_treats(a: int) -> int:
+    """Eat your treats that you have gathered to win the game."""
     global points
     print(input(f"Press enter to eat your {points} treats and win the game. "))
     points -= a
@@ -42,6 +45,7 @@ def eat_treats(a: int) -> int:
 
 
 def path_select() -> None:
+    """The main function of the game. selecting paths left or right."""
     from random import randint
     global points
     path: str = input(f"{player}, choose a path. left or right. ")
@@ -64,6 +68,7 @@ def path_select() -> None:
 
 
 def keep_playing() -> None:
+    """Asks the player if they want to keep playing."""
     print(f"You have gathered {points} treats.")
     choice: str = input(f"{player} would you like to continue? y/n ")
     if choice == "n":
@@ -71,6 +76,7 @@ def keep_playing() -> None:
 
 
 def death() -> None:
+    """If the player loses their lives, they die a painful death."""
     print(f"{player}, you have lost your ninth life.")
     print(f"Game over. {CAT_DEATH} ")
     print(f"Number of treats obtained: {points}")
@@ -78,6 +84,7 @@ def death() -> None:
 
 
 def exit_game() -> None:
+    """If the player chooses to end the game early this message plays."""
     print(f"{player}, you live to die another day. {CAT_SLY} ")
     print(f"Thanks for playing, {player}")
     print(f"your total score is: {points}")
