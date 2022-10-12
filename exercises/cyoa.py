@@ -29,9 +29,9 @@ def main() -> None:
 def greet() -> None:
     """A function that greets the player."""
     global player
-    print("Welcome to 'Cat Path ' ")
+    print("Welcome to Cat Path ")
     print("You will play as a cat choosing paths. ")
-    print("If you choose the right path, you will receive a cat treat" )
+    print("If you choose the right path, you will receive a cat treat ")
     print("If you choose the wrong path nine times, you will be out of lives. ")
     player = input(f"What is your {CAT} name? ")
 
