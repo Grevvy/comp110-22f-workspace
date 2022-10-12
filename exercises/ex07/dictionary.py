@@ -33,17 +33,15 @@ def favorite_color(xs: dict[str, str]) -> str:
 
 
 def count(xs: list[str]) -> dict[str,int]:
+    """Creates a dictionary that has the items as keys and the number of times that item occurs as values."""
     ks: dict[str,int] = {}
     i: int = 0
-    # add items from a list into a dictionary as keys
-    # if multiple keys exist increase the value by 1
-    for x in xs:
+    while i < len(xs):
         for keys in ks:
-            x = keys
-            if x in ks:
-                ks[keys] += 1
-            else:
-                ks[keys] = 1
+            keys = xs[i]
+        if xs[i] in ks:
+            ks[xs[i]] += 1
+        else:
+            ks[xs[i]] = 1
+        i += 1
     return ks
-
-print(count(["blue", "blue", "green", "red"]))
