@@ -4,7 +4,7 @@
 from exercises.ex07.dictionary import invert
 from exercises.ex07.dictionary import favorite_color
 from exercises.ex07.dictionary import count
-
+import pytest
 
 
 def test_invert() -> None:
@@ -20,9 +20,10 @@ def test_invert_empty() -> None:
 
 
 def test_invert_same() -> None:
-    """Tests what happens if argument has two of the same values."""
-    xs: dict[str, str] = {"a": "one", "b": "one"}
-    assert invert(xs) == {"one": "b"}
+    """Raises an error if two keys have the same value."""
+    with pytest.raises(KeyError):
+        my_dictionary = {'a': 'one', 'b': 'one'}
+        invert(my_dictionary)
 
 
 def test_favorite_color() -> None:
@@ -38,7 +39,7 @@ def test_favorite_color_all_one() -> None:
 
 
 def test_favorite_color_empty() -> None:
-    """If the argument is empty, returns nothing"""
+    """If the argument is empty, returns nothing."""
     xs: dict[str, str] = {}
     assert favorite_color(xs) == ""
 
@@ -58,4 +59,4 @@ def test_count_empty() -> None:
 def test_count_all_same() -> None:
     """Test count function if argument is all the same item."""
     xs: list[str] = ["green", "green", "green", "green"]
-    assert count (xs) == {"green": 4}
+    assert count(xs) == {"green": 4}
