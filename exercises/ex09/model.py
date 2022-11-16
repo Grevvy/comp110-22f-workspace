@@ -3,10 +3,10 @@
 from __future__ import annotations
 from random import random
 from exercises.ex09 import constants
-from math import sin, cos, pi
+from math import sin, cos, pi, sqrt
 
 
-__author__ = ""  # TODO
+__author__ = "730529974"
 
 
 class Point:
@@ -25,6 +25,10 @@ class Point:
         y: float = self.y + other.y
         return Point(x, y)
 
+    def distance(self, other: Point) -> int:
+        """Calculates the distance between two points."""
+        return sqrt((other.x - self.x) ** 2 + (other.y - self.y) ** 2)
+
 
 class Cell:
     """An individual subject in the simulation."""
@@ -37,16 +41,47 @@ class Cell:
         self.location = location
         self.direction = direction
 
+    def contract_disease(self):
+        """Contracts a disease onto a cell."""
+        self.sickness = constants.INFECTED
+
+    def is_vulnerable(self) -> bool:
+        """Determines if a cell is vulnerable."""
+        if self.sickness == constants.VULNERABLE:
+            return True
+        else:
+            return False
+
+    def is_infected(self) -> bool:
+        """Determines if a cell is infected."""
+        if self.sickness == constants.INFECTED:
+            return True
+        else:
+            return False
+
     # Part 1) Define a method named `tick` with no parameters.
     # Its purpose is to reassign the object's location attribute
     # the result of adding the self object's location with its
     # direction. Hint: Look at the add method.
     def tick(self) -> None:
+        """Ticks forward time in the simulation."""
         self.location = self.location.add(self.direction)
         
     def color(self) -> str:
         """Return the color representation of a cell."""
-        return "black"
+        if self.is_vulnerable():
+            return "gray"
+        if self.is_infected():
+            return "red"
+        else:   
+            return "black"
+
+    def contact_with(self, other_cell: Cell):
+        """If two cells contact, one cell infects the other."""
+        if self.is_infected() is True and other_cell.is_vulnerable() is True:
+            other_cell.contract_disease()
+        elif self.is_vulnerable() is True and other_cell.is_infected() is True:
+            self.contract_disease()
 
 
 class Model:
@@ -55,10 +90,18 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float):
+    def __init__(self, cells: int, speed: float, infected_cells: int):
         """Initialize the cells with random locations and directions."""
         self.population = []
-        for _ in range(0, cells):
+        if infected_cells >= cells or infected_cells <= 0:
+            raise ValueError('Some number of cells must begin as infected')
+        for _ in range(0, infected_cells):
+            start_location: Point = self.random_location()
+            start_direction: Point = self.random_direction(speed)
+            cell: Cell = Cell(start_location, start_direction)
+            cell.contract_disease()
+            self.population.append(cell)
+        for _ in range(infected_cells, cells):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
             cell: Cell = Cell(start_location, start_direction)
