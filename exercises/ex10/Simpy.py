@@ -14,7 +14,7 @@ class Simpy:
         self.values = values
 
     def __repr__(self) -> str:
-        return f"simpy({self.values})"
+        return f"Simpy({self.values})"
     
     def fill(self, fill_value: float, number_of_values: int):
         self.values = []
