@@ -8,6 +8,8 @@ __author__ = "730529974"
 
 
 class Simpy:
+    """An object with a list that has many more functions than a simple list."""
+    
     values: list[float]
 
     def __init__(self, values: list[float]):
@@ -90,11 +92,8 @@ class Simpy:
         if isinstance(rhs, list):
             assert len(self.values) == len(rhs)
             for i in range(len(self.values)):
-                if rhs[i] == True:
+                if rhs[i] is True:
                     result.values.append(self.values[i])
             return result
         if isinstance(rhs, int):
             return self.values[rhs]
-        
-
-
