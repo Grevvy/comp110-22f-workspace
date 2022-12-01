@@ -1,9 +1,9 @@
 """Tests for linked list utils."""
 
 import pytest
-from exercises.ex11.linked_list import Node, last, value_at, max
+from exercises.ex11.linked_list import Node, last, value_at, max, linkify
 
-__author__ = "Your PID"
+__author__ = "730529974"
 
 
 def test_last_empty() -> None:
@@ -28,3 +28,10 @@ def test_max_non_empty() -> None:
     """Regular use of max function."""
     linked_list = Node(10, Node(20, Node(30, None)))
     assert max(linked_list) == 30
+
+
+def test_linkify_non_empty() -> None:
+    """Regular use of linkify function."""
+    original_list: list[int] = [10, 20, 30]
+    linked_list = Node(10, Node(20, Node(30, None)))
+    assert linkify(original_list) == linked_list

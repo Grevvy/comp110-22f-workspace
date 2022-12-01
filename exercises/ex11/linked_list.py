@@ -66,4 +66,6 @@ def max(head: Optional[Node]) -> int:
 
 def linkify(items: list[int]) -> Optional[Node]:
     """Takes a list and makes it a linked list."""
-    
+    if len(items) == 1:
+        return Node(items[0])
+    return Node(items[0], linkify(items[1:]))
